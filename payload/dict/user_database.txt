@@ -1,0 +1,13 @@
+root
+mysql
+oracle
+admin
+bwsa
+hbv7
+kisadmin
+su
+sa
+test
+users
+vice
+wwo
