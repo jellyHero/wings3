@@ -278,5 +278,5 @@ def pathScan(URL,resultFile=None,sign_start_num=None,sign_end_num=None,maxconnec
 if __name__ == '__main__':
     last_time = time.time()
     URL = 'https://ac3f1fcb1f48870e802fcca1003900d0.web-security-academy.net/'  # 扫描目标
-    pathScan(URL,wordsList_plus='/Users/shellyzhang/1_codeing/0_python/wings3/payload/dict/wordsList_plus.txt',onlyPath=True)
+    pathScan(URL,wordsList_plus='/Users/shellyzhang/1_codeing/0_python/wings3/payload/dict/path_wordsList_plus.txt',onlyPath=True)
     print('scan path end.total time is {}'.format(time.time() - last_time))
