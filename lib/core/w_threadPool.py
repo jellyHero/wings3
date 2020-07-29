@@ -16,15 +16,22 @@ class MyThreadPool():
     def start(self):
         with ThreadPoolExecutor(max_workers=self.thread_num) as executor:
             if self.other_args != None:
-                all_task = [executor.submit(self.my_func, (test.strip()),(self.other_args)) for test in self.my_list]
+                try:
+                    all_task = [executor.submit(self.my_func, (test.strip()),(self.other_args)) for test in self.my_list]
+                except:
+                    all_task = [executor.submit(self.my_func, (test), (self.other_args)) for test in self.my_list]
             else:
-                all_task = [executor.submit(self.my_func, (test.strip())) for test in self.my_list]
+                try:
+                    all_task = [executor.submit(self.my_func, (test.strip())) for test in self.my_list]
+                except:
+                    all_task = [executor.submit(self.my_func, (test)) for test in self.my_list]
             for future in as_completed(all_task):
                 # pass
                 data = future.result()
-                self.result.append(data)
-                # return data
-
+                if data == None:
+                    pass
+                else:
+                    self.result.append(data)
 
 # def test_func(test,other_args):
 #     print('get http://t00ls.net/{}'.format(test))

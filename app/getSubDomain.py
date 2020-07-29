@@ -12,7 +12,7 @@ def isExist_from_NS(word,domain):
     target = '{}.{}'.format(word,domain)
     try:
         A = dns.resolver.query(target, 'A')
-        print('{} is exist'.format(target))
+        print('##success:{}'.format(target))
     except:
         print('{} is not exist'.format(target))
         return False
@@ -81,6 +81,7 @@ def getSubDomainFrom_crt_sh(domain):
         temp_result = pattern.findall(resp.text)
         result = []
         for i in temp_result:
+            print(i)
             if '<BR>' in i:
                 result.extend(i.split('<BR>'))
             else:
@@ -107,22 +108,31 @@ def getSubDomain(domain,file_name=None,key_words=None):
     return subDomain
 
 
-#在main函数基础上，进行递归查询，去重，并获得对应的ip
-def getSubDomain2(domain,file_name=None,key_words=None,times=None):
-    if times == None:
-        times = 2
-    if type(times) == int:
-        pass
+#在main函数基础上，进行递归查询：这里写死了最多进行一次递归，超过两次该函数不适用
+def getSubDomain2(domain,file_name=None,key_words=None,times=2):
+    temp_target = [domain]
+    result = []
+    if times == 1:
+        getSubDomain(domain, file_name, key_words)
     else:
-        raise Exception('times is not int')
-    i = 1
-    while True:
-        if i == times:
-            break
-        pass
+        times = 2
+        i = 0
+        while True:
+            i = i + 1
+            print('=====times {} ===== '.format(i))
+            for j in temp_target:
+                # print('j :{}'.format(j))
+                temp_target = getSubDomain(j, file_name, key_words)
+                # print('temp_target:{}'.format(temp_target))
+                result.extend(temp_target)
+                # print('result : {}'.format(result))
+            if i == times:
+                break
+    return deduplication_list(result)
+
 
 
 if __name__ == '__main__':
-    target = 'wj.qq.com'
-    result = getSubDomain(target)
+    target = 'c.qq.com'
+    result = getSubDomain2(target)
     print(addIPtoSubdomain(result))

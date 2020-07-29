@@ -6,13 +6,13 @@ from conf.conf import base_root
 
 #读文件
 def readFile(target_file):
-	with open(target_file, 'r') as f:
+	with open(target_file, 'r',encoding='utf-8') as f:
 		# print(f.readlines())
 		return f.readlines()
 
 #写文件
 def writeFile(target_file,STR):
-	with open(target_file, 'a') as f:
+	with open(target_file, 'a',encoding='utf-8') as f:
 		f.write(STR)
 
 # 删除文件

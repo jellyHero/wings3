@@ -82,7 +82,7 @@ class response(object):
     def __init__(self, rep, redirect, oldcookie=''):
         # print(rep.peek())
         self.rep = rep
-        self.status_code = self.rep.status  # response code
+        self.status_code = self.status = self.rep.status  # response code
         self.url = redirect
         self._content = ''
         self.body = self.content()
@@ -111,6 +111,7 @@ class response(object):
 
         self.headers = _header_dict
         self.header = self.rep.msg  # response header
+        self.content_type = self.header['Content-Type']
         charset = self.rep.msg.get('content-type', 'utf-8')
         try:
             self.charset = charset.split("charset=")[1]
@@ -250,7 +251,7 @@ def httpreq_raw(method,scheme,host,port=None,path=None,headers=None,body=None,pr
 # 具体参考：https://github.com/boy-hack/hack-requests/blob/master/demo/CVE-2016-10033.py	str
 def httpreq(url, **kwargs):
     method = kwargs.get("method", "GET")
-    post = kwargs.get("post", None) or kwargs.get("data", None)
+    post = kwargs.get("post", None) or kwargs.get("data", None) or kwargs.get("body", None)
     location = kwargs.get('location', True)
     locationcount = kwargs.get("locationcount", 0)
 
@@ -350,19 +351,20 @@ def httpreq(url, **kwargs):
 
 
 # if __name__ == '__main__':
-#     method = 'GET'
-#     scheme,host = 'http', '10.178.31.61'
-#     port = 80
-#     path = '/dvwa/vulnerabilities/xss_r/?name=123'
-#     headers =  {'Cookie':'security=low; PHPSESSID=ol5ao8q989b8ajs9inu1bnosv5'}
-#     body = None
-#
-#     hh = httpreq_raw(method,scheme,host,port,path,headers=headers,body=body)
-#     # print(hh.text(),hh.status_code,hh.headers)
-#     text = hh.text()
-#     print(text)
+    # method = 'GET'
+    # scheme,host = 'http', 'www.baidu.com'
+    # port = 80
+    # path = '/'
+    # headers =  {'Cookie':'security=low; PHPSESSID=ol5ao8q989b8ajs9inu1bnosv5'}
+    # body = None
 
-    # url = "http://10.178.31.61/dvwa/vulnerabilities/xss_r/?name=123"
-    # u = httpreq(url, method="GET")
+    # hh = httpreq_raw(method,scheme,host,port,path,headers=headers,body=body,laction=False)
+    # print(hh.text(),hh.status_code,hh.headers)
+    # text = hh.text()
+    # print(text)
+
+    # url = "http://www.baidu.com/"
+    # u = httpreq(url, method="GET",location=False)
     # print(u.text())
+    # print(u.status)
 

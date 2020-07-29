@@ -42,8 +42,7 @@ class Masscan:
 
 if __name__=="__main__":
 	for i in range(1,256):
-		my_scan = Masscan('101.226.100.{}'.format(i))
-		print('Scan 101.226.100.{}'.format(i))
+		my_scan = Masscan('172.16.40.{}'.format(i))
 		print(my_scan.masscan_main())
 
 #     # ['192.168.1.1:8443', '192.168.1.1:53', '192.168.1.1:1990', '192.168.1.1:56377', '192.168.1.1:515', '192.168.1.1:3838']

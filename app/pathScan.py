@@ -277,6 +277,9 @@ def pathScan(URL,resultFile=None,sign_start_num=None,sign_end_num=None,maxconnec
 
 if __name__ == '__main__':
     last_time = time.time()
-    URL = 'https://ac3f1fcb1f48870e802fcca1003900d0.web-security-academy.net/'  # 扫描目标
-    pathScan(URL,wordsList_plus='/Users/shellyzhang/1_codeing/0_python/wings3/payload/dict/path_wordsList_plus.txt',onlyPath=True)
+    URL = 'https://x.security.tencent.com/'  # 扫描目标
+    Extension_AddList = ['php','jsp','txt'] #扫描包含的扩展名
+    Extension_DelList = ['html','js']  #扫描不包含的扩展名
+    wordsList_plus = '{}payload/dict/path_wordsList_plus.txt'.format(base_root) #额外扫描的字典，一般都是超强字典
+    pathScan(URL,onlyPath=True,Extension_AddList=None,Extension_DelList=None,wordsList_plus=None,)
     print('scan path end.total time is {}'.format(time.time() - last_time))

@@ -1,5 +1,10 @@
 import re
 
+# import base64
+# print(base64.b64encode('abc'.encode()))
+# print(base64.b64decode('YWJj'))
+
+
 '''
 可根据自定义的base64表，来编解码
 '''
@@ -64,13 +69,13 @@ def decodeText_From_KownTeam(crp,know_text,kown_crp):
     print(temp_dict)
     print(old_crp)
     # print(base64_decode(old_crp))
+#
+# if __name__ == '__main__':
+#     crp = "uLdAuO8duojAFLEKjIgdpfGeZoELjJp9kSieuIsAjJ/LpSXDuCGduouz"
+#     know_text = "ashlkj!@sj1223%^&*Sd4564sd879s5d12f231a46qwjkd12J;DJjl;LjL;KJ8729128713"
+#     kown_crp = "pTjMwJ9WiQHfvC+eFCFKTBpWQtmgjopgqtmPjfKfjSmdFLpeFf/Aj2ud3tN7u2+enC9+nLN8kgdWo29ZnCrOFCDdFCrOFoF="
+#     decodeText_From_KownTeam(crp,know_text,kown_crp)
 
 
-crp = "uLdAuO8duojAFLEKjIgdpfGeZoELjJp9kSieuIsAjJ/LpSXDuCGduouz"
-know_text = "ashlkj!@sj1223%^&*Sd4564sd879s5d12f231a46qwjkd12J;DJjl;LjL;KJ8729128713"
-kown_crp = "pTjMwJ9WiQHfvC+eFCFKTBpWQtmgjopgqtmPjfKfjSmdFLpeFf/Aj2ud3tN7u2+enC9+nLN8kgdWo29ZnCrOFCDdFCrOFoF="
-decodeText_From_KownTeam(crp,know_text,kown_crp)
-
-
-# dictionary =  "XYZFGHI2+/Jhi345jklmEnopuvwqrABCDKL6789abMNWcdefgstOPQRSTUVxyz01"
-# print(base64_decode("nRKKAHzMrQzaqQzKpPHClX==", dictionary))
+    # dictionary =  "XYZFGHI2+/Jhi345jklmEnopuvwqrABCDKL6789abMNWcdefgstOPQRSTUVxyz01"
+    # print(base64_decode("nRKKAHzMrQzaqQzKpPHClX==", dictionary))

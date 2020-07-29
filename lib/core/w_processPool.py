@@ -17,14 +17,24 @@ class MyProcessPool():
     def start(self):
         with ProcessPoolExecutor(max_workers=self.process_num) as executor:
             if self.other_args != None:
-                all_task = [executor.submit(self.my_func,(test.strip()),(self.other_args)) for test in self.my_list]
+                try:
+                    all_task = [executor.submit(self.my_func,(test.strip()),(self.other_args)) for test in self.my_list]
+                except:
+                    all_task = [executor.submit(self.my_func, (test), (self.other_args)) for test in self.my_list]
             else:
-                all_task = [executor.submit(self.my_func, (test.strip())) for test in self.my_list]
+                try:
+                    all_task = [executor.submit(self.my_func, (test.strip())) for test in self.my_list]
+                except:
+                    all_task = [executor.submit(self.my_func, (test)) for test in self.my_list]
             for future in as_completed(all_task):
                 # pass
                 data = future.result()
-                self.result.append(data)
-                # return data
+                if data:
+                    self.result.append(data)
+                    if data == None:
+                        pass
+                    else:
+                        self.result.append(data)
 
 
 
@@ -32,7 +42,7 @@ class MyProcessPool():
 #     print('get http://t00ls.net/{}'.format(test))
 #     print('{} is {}'.format(test,other_args))
 #
-# test_list = range(1,9)
+# test_list = str(range(1,9))
 # process_num = 2
 # other_args = 'sucess'
 # myProcess = MyProcessPool(test_func,test_list,process_num=process_num,other_args=other_args)

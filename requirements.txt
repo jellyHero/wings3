@@ -1,2 +1,4 @@
 requests
 dnspython
+pwn
+PyYAML

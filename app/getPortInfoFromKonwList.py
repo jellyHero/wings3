@@ -11,6 +11,6 @@ def getPortInfoFromKonwList(port):
     return port_process_list
 
 
-# if __name__=="__main__":
-#     print(getPortInfoFromKonwList('8080'))
-#     #[['8080', 'httpd\n'], ['8080', 'java\n'], ['8080', 'java(jenkins.war)\n']]
+if __name__=="__main__":
+    print(getPortInfoFromKonwList('8080'))
+    #[['8080', 'httpd\n'], ['8080', 'java\n'], ['8080', 'java(jenkins.war)\n']]

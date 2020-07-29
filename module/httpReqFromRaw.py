@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from lib.net.httpcon import httpreq_raw
 
 def convert_arg_line_to_args(arg_line):

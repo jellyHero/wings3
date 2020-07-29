@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import time
 
 from conf.conf import base_root

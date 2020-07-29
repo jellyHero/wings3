@@ -206,3 +206,4 @@ def hex_strXORHex_str(hex_str1,hex_str2):
 
 # plain = '99'
 # print(hex_str2Asc_str(plain))
+# print(asc_str2Hex_str('ctf'))
